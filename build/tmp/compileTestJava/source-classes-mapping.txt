@@ -1,0 +1,7 @@
+com/baeldung/collectors/CollectorsUnitTest.java
+ com.baeldung.collectors.CollectorsUnitTest
+ com.baeldung.collectors.CollectorsUnitTest$Range
+net/sasconsul/Intervals/IntervalDataProvider.java
+ net.sasconsul.Intervals.IntervalDataProvider
+net/sasconsul/Intervals/MergeIntervalsTest.java
+ net.sasconsul.Intervals.MergeIntervalsTest
