@@ -20,51 +20,34 @@ public class CollectorsUnitTest {
         Range range = numbers.stream()
                 .collect(teeing(minBy(Integer::compareTo), maxBy(Integer::compareTo), (min, max) -> new Range(min.orElse(null), max.orElse(null))));
 
-        Assertions.assertEquals(range,new Range(2, 42));
+        Assertions.assertEquals(new Range(2, 42), range);
 //        assertThat(range).isEqualTo(new Range(2, 42));  //Assertj not working
     }
 
     /**
-     * Represents a closed range of numbers between {@link #min} and
-     * {@link #max}, both inclusive.
-     */
-    private static class Range {
-
-        private final Integer min;
-
-        private final Integer max;
-
-        Range(Integer min, Integer max) {
-            this.min = min;
-            this.max = max;
-        }
-
-        Integer getMin() {
-            return min;
-        }
-
-        Integer getMax() {
-            return max;
-        }
+         * Represents a closed range of numbers between {@link #min} and
+         * {@link #max}, both inclusive.
+         */
+        private record Range(Integer min, Integer max) {
 
         @Override
-        public boolean equals(Object o) {
-            if (this == o)
-                return true;
-            if (o == null || getClass() != o.getClass())
-                return false;
-            Range range = (Range) o;
-            return Objects.equals(getMin(), range.getMin()) && Objects.equals(getMax(), range.getMax());
-        }
+            public boolean equals(Object o) {
+                if (this == o)
+                    return true;
+                if (o == null || getClass() != o.getClass())
+                    return false;
+                Range range = (Range) o;
+                return Objects.equals(min(), range.min()) && Objects.equals(max(), range.max());
+            }
 
-        @Override
-        public int hashCode() {
-            return Objects.hash(getMin(), getMax());
-        }
+            @Override
+            public int hashCode() {
+                return Objects.hash(min(), max());
+            }
 
-        @Override
-        public String toString() {
-            return "Range{" + "min=" + min + ", max=" + max + '}';
+            @Override
+            public String toString() {
+                return "Range{" + "min=" + min + ", max=" + max + '}';
+            }
         }
-    }
 }

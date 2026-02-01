@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.baeldung.collectors.CollectorsUnitTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-01-22T23:17:21" hostname="Stuarts-13-MacBook-Pro.local" time="0.021">
-  <properties/>
-  <testcase name="whenTeeing_ItShouldCombineTheResultsAsExpected()" classname="com.baeldung.collectors.CollectorsUnitTest" time="0.021"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
