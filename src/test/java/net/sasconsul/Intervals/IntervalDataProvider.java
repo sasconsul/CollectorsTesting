@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class IntervalDataProvider
 {
@@ -24,6 +23,7 @@ public class IntervalDataProvider
                 { Interval.getIntervals("[1,4] [3,5] [6,6] [6,9]"), Interval.getIntervals("[1,5] [6,9]" ), "Some Overlaping intervals"},
                 { Interval.getIntervals("[94133,94133] [94200,94299] [94600,94699]"), Interval.getIntervals("[94133,94133] [94200,94299] [94600,94699]" ), "No zip merges needed"},
                 { Interval.getIntervals("[94133,94133] [94200,94299] [94226,94399]"), Interval.getIntervals("[94133,94133] [94200,94399]" ), "One Zip merge"},
+                {Interval.getIntervals("[1, 5] [2, 4] [6, 6] [7, 14] [16, 19]"),Interval.getIntervals(""), "Not inserting an Interval"}
         };
     }
 
@@ -52,8 +52,7 @@ public class IntervalDataProvider
     @TestFactory
     public static Object[][] largeMergingZipDataProvider() {
 
-        List<Interval> intervalList = IntStream.range(0, 10000).mapToObj(i -> new Interval(i, i+1)).collect(Collectors.toList());
-        ArrayList<Interval> inputIntervals = new ArrayList<>(intervalList);
+        ArrayList<Interval> inputIntervals = IntStream.range(0, 10000).mapToObj(i -> new Interval(i, i + 1)).collect(Collectors.toCollection(ArrayList::new));
         Interval interval = new Interval(0, 10000);
         ArrayList<Interval> expectedIntervals = new ArrayList<>();
         expectedIntervals.add(interval);
